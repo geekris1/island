@@ -1,9 +1,9 @@
 import { createRoot } from "react-dom/client";
-import { Default } from "../theme-default";
+import { App } from "../theme-default/App";
 
 function renderInBrowser() {
   const container = document.querySelector("#root");
-  createRoot(container).render(<Default></Default>);
+  createRoot(container).render(<App></App>);
 }
 
 renderInBrowser();

@@ -5,12 +5,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "tsup --watch"
+    "start": "tsup --watch",
+    "build": "tsup"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.11.12",
     "tsup": "^6.5.0",
     "typescript": "^4.9.4"
@@ -19,9 +21,14 @@
     "island": "./bin/index.js"
   },
   "dependencies": {
+    "@vitejs/plugin-react": "^3.0.0",
     "cac": "^6.7.14",
+    "fs-extra": "^11.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "vite": "^4.0.0"
+    "rollup": "^3.7.0",
+    "vite": "^4.0.0",
+    "polka": "^0.5.2",
+    "sirv": "^2.0.2"
   }
 }

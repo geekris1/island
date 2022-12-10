@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function Default() {
+export function App() {
   let [count, setCount] = useState(0);
   return (
     <div>

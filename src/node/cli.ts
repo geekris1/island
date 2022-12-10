@@ -1,5 +1,7 @@
 import cac from "cac"
+import { build } from './build'
 import { createDevServer } from "./dev"
+import { server } from "./server"
 
 const cli = cac('island').version('0.0.1').help()
 
@@ -9,8 +11,14 @@ cli.command("dev [root]", 'start dev server ~~').action(async (root: string) => 
   server.printUrls()
 })
 
-cli.command("build [root]", 'start build project ~~').action((root: string) => {
-  console.log(`build ${root}`)
+cli.command("build [root]", 'start build project ~~').action(async (root: string) => {
+  await build(root)
 })
+
+cli.command("server [root]", 'start server ~~').action(async (root: string) => {
+  await build(root)
+  server(root)
+})
+
 
 cli.parse()
