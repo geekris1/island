@@ -4,11 +4,15 @@ import type { InlineConfig } from 'vite'
 import type { RollupOutput } from 'rollup'
 import { resolve, join } from 'path'
 import fs from 'fs-extra'
+import { VitePluginIslandConfig } from 'plugin'
+import { resolveConfig } from './config'
+import { SiteConfig } from 'shared/types'
 
-function resolveViteBuildConfig(root: string, isServer: boolean): InlineConfig {
+function resolveViteBuildConfig(root: string, config: SiteConfig, isServer: boolean): InlineConfig {
   return {
     mode: "production",
     root,
+    plugins: [VitePluginIslandConfig(config)],
     build: {
       ssr: isServer,
       outDir: isServer ? "ssr" : "build",
@@ -49,11 +53,12 @@ async function generatePages(
   await fs.remove(ssrFilePath)
 }
 async function bundle(root: string) {
+  const config = await resolveConfig(root)
   async function serverBuild() {
-    return await viteBuild(resolveViteBuildConfig(root, true))
+    return await viteBuild(resolveViteBuildConfig(root, config, true))
   }
   async function clientBuild() {
-    return await viteBuild(resolveViteBuildConfig(root, false))
+    return await viteBuild(resolveViteBuildConfig(root, config, false))
   }
   return Promise.all([clientBuild(), serverBuild()])
 }
