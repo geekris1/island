@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "tsup --watch",
-    "build": "tsup"
+    "build": "tsup",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +16,8 @@
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.11.12",
     "tsup": "^6.5.0",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "vitest": "^0.25.8"
   },
   "bin": {
     "island": "./bin/index.js"
@@ -23,10 +25,12 @@
   "dependencies": {
     "@vitejs/plugin-react": "^3.0.0",
     "cac": "^6.7.14",
+    "fast-glob": "^3.2.12",
     "fs-extra": "^11.1.0",
     "polka": "^0.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.5",
     "rollup": "^3.7.0",
     "sirv": "^2.0.2",
     "unconfig": "^0.3.7",

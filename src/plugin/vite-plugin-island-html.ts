@@ -1,6 +1,6 @@
 import type { Plugin } from 'vite';
 import { readFile } from 'fs/promises'
-import { CLIENT_ENTRY_PATH, DEFAULT_TEMPLATE_HTML } from '../constants';
+import { CLIENT_ENTRY_PATH, DEFAULT_TEMPLATE_HTML, __filename, __dirname } from '../constants';
 export function VitePluginIslandHtml(): Plugin {
   return {
     name: "vite-plugin-island-html",

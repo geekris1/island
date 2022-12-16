@@ -7,12 +7,15 @@ import fs from 'fs-extra'
 import { VitePluginIslandConfig } from 'plugin'
 import { resolveConfig } from './config'
 import { SiteConfig } from 'shared/types'
-
+import react from '@vitejs/plugin-react'
 function resolveViteBuildConfig(root: string, config: SiteConfig, isServer: boolean): InlineConfig {
   return {
     mode: "production",
     root,
-    plugins: [VitePluginIslandConfig(config)],
+    plugins: [react(), VitePluginIslandConfig(config)],
+    ssr: {
+      noExternal: ['react-router-dom']
+    },
     build: {
       ssr: isServer,
       outDir: isServer ? "ssr" : "build",
